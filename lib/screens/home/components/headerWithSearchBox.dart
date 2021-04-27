@@ -12,14 +12,14 @@ class HeaderWithSearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 70),
+      padding: EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             bottomLeft:Radius.circular(36),
             bottomRight:Radius.circular(36),
           )
       ),
-      height: size.height * 0.3,
+      height: size.height * 0.22  ,
       child: Stack(
         children: [
           Container(
@@ -80,7 +80,7 @@ class HeaderWithSearchBox extends StatelessWidget {
                         ),
                         enabledBorder:InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        suffixIcon:Image.asset('assets/icons/search-icon.png',height: size.height*0.03,)
+                        suffixIcon:Image.asset('assets/icons/search-icon.png',height: size.height*0.02,)
                     ),
                   )
               )

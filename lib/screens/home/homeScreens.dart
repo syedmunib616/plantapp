@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterap/constants.dart';
 
-import 'package:flutterap/screens/components/body.dart';
+
+import 'package:flutterap/screens/home/components/body.dart';
+import 'package:flutterap/screens/home/components/bottomNavBar.dart';
 
 class HomeScreens extends StatelessWidget{
 
@@ -9,6 +12,7 @@ class HomeScreens extends StatelessWidget{
     return Scaffold(
       appBar: buildAppBar(),
       body: Body(),
+      bottomNavigationBar: bottomNavBar(),
     );
   }
 
@@ -21,3 +25,4 @@ class HomeScreens extends StatelessWidget{
     );
   }
 }
+

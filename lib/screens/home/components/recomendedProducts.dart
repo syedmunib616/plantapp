@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutterap/constants.dart';
+import 'package:flutterap/screens/details/components/body.dart';
+import 'package:flutterap/screens/details/detailsScreen.dart';
 
 import '../../constants.dart';
 
@@ -8,10 +11,17 @@ class RecomendedProducts extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
+  _redirectToDetailView(BuildContext context) {
+  Navigator.push(
+  context, MaterialPageRoute(
+  builder: (context) => DetailsScreen(),),);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      physics: BouncingScrollPhysics(),
       child: Row(
         children: [
           RecomendCard(
@@ -19,24 +29,27 @@ class RecomendedProducts extends StatelessWidget {
             title: "Samantha",
             country: "Russia",
             price: 900,
-          ),
+            press: ()=> _redirectToDetailView(context)),
           RecomendCard(
             image: "assets/images/2.jpeg",
             title: "Samantha",
             country: "Swizerland",
             price: 100,
+              press: ()=> _redirectToDetailView(context)
           ),
           RecomendCard(
             image: "assets/images/3.jpeg",
             title: "Samantha",
             country: "Russia",
             price: 900,
+              press: ()=> _redirectToDetailView(context)
           ),
           RecomendCard(
             image: "assets/images/1.jpeg",
             title: "Samantha",
             country: "Russia",
             price: 900,
+              press: ()=> _redirectToDetailView(context)
           )
         ],
       ),
@@ -58,24 +71,29 @@ class RecomendCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size= MediaQuery.of(context).size;
     return Container(
+
       margin: EdgeInsets.all(7),
-      width: size.width*0.4,
-      height: size.height*0.4,
+      width: size.width * 0.4,
+      height: size.height * 0.27,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           //"assets/images/1.jpeg"
-          Image.asset(image),
+          
+          ClipRRect(
+              borderRadius: BorderRadius.only(topRight: Radius.circular(10),topLeft: Radius.circular(10)),
+              child: Image.asset(image,fit: BoxFit.cover, height: size.height * 0.2,)),
           GestureDetector(
             onTap:press,
             child: Container(
               padding: EdgeInsets.all(padding1/2),
               decoration: BoxDecoration(
+
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30)
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -103,7 +121,7 @@ class RecomendCard extends StatelessWidget {
                   ),
                   Spacer(),
                   Text('\$$price',
-                    style: Theme.of(context).textTheme.button.copyWith(color: primary),
+                        style: Theme.of(context).textTheme.button.copyWith(color: primary),
                   )
                 ],
               ),
